@@ -36,7 +36,7 @@ parser.addArgument(
 
 var args = parser.parseArgs();
 
-[1, 2, 4].forEach(function(pxRatio) {
+[1, 2, 4, 8].forEach(function(pxRatio) {
     var svgs = glob.sync(path.resolve(args.input + '/*.svg'))
         .map(function(f) {
             return {
@@ -45,7 +45,7 @@ var args = parser.parseArgs();
             };
         });
 
-    var prefix = pxRatio > 1 ? '@' + pxRatio : '';
+    var prefix = pxRatio > 1 ? '@' + pxRatio + 'x' : '';
     var pngPath = path.resolve(path.join(args.output, args.name + prefix + '.png'));
     var jsonPath = path.resolve(path.join(args.output, args.name + prefix + '.json'));
 
